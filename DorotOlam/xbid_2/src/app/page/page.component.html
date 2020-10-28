@@ -1,0 +1,86 @@
+<div dir="rtl">
+    <b>here we are</b>
+    {{index.FirstName}}
+    {{root.IndexDetails.firstName}}
+    {{root.indexDetails}}
+
+    <h1>פרטים אישיים</h1>
+    <div>
+        <label> {{root.indexDetails.firstName}}</label>
+        <label *ngIf="root.indexDetails.lastName">
+            {{root.indexDetails.lastName}}
+        </label>
+        <label *ngIf="root.indexDetails.previousFamilyName">
+            ({{root.indexDetails.previousFamilyName}})
+        </label>
+    </div>
+    <div *ngIf="root.indexDetails.picture">
+        <img src="{{root.indexDetails.picture}}">
+    </div>
+    <div>
+        <label *ngIf="root.profileDetails.birthDate"> נולד ב {{root.profileDetails.birthDate}} </label>
+        <label *ngIf="root.profileDetails.birthplace">, ב {{root.profileDetails.birthplace}} </label>
+        <label *ngIf="root.registerDetails.fatherFirstName">, ל {{root.registerDetails.fatherFirstName}} </label>
+        <label *ngIf="root.registerDetails.motherFirstName">, ו {{root.registerDetails.motherFirstName}} </label>
+    </div>
+
+    <h1>קורות חייו</h1>
+    <div *ngIf="root.profileDetails.lifehistory">{{root.profileDetails.lifehistory}}</div>
+    <div *ngIf="root.profileDetails.moreAddress.length>0  || root.profileDetails.residence">
+        התגורר ב
+        <label *ngIf="root.profileDetails.residence">{{root.profileDetails.residence}},</label>
+        <label *ngFor="let item of root.profileDetails.moreAddress">
+            {{item.name}},
+        </label>
+    </div>
+    <div *ngIf="root.landingDetails.affiliation">השתייך לקהילת {{root.landingDetails.affiliation}}</div>
+    <div *ngIf="root.landingDetails.rabbis.length > 0">
+        מרבותיו
+        <label *ngFor="let item of root.landingDetails.rabbis">
+            {{item.name}},
+        </label>
+    </div>
+    <div *ngIf="root.landingDetails.students.length > 0">
+        מתלמידיו
+        <label *ngFor="let item of root.landingDetails.students">
+            {{item.name}},
+        </label>
+    </div>
+    <div *ngIf="root.landingDetails.studyPlace.length > 0">
+        למד ב
+        <label *ngFor="let item of root.landingDetails.studyPlace">
+            {{item.name}},
+        </label>
+    </div>
+    <div *ngIf="root.landingDetails.occupation.length > 0">
+        עסק ב
+        <label *ngFor="let item of root.landingDetails.occupation">
+            {{item.nameInstitution}},
+        </label>
+    </div>
+
+    <h1>פטירתו</h1>
+    <label *ngIf="root.profileDetails.deathdate">נפטר ב {{root.profileDetails.deathdate}} ,</label>
+    <label *ngIf="root.profileDetails.deathplace">ב {{root.profileDetails.deathplace}} ,</label>
+    <!-- <label *ngIf="">מ {{}}</label> -->
+    <label *ngIf="root.profileDetails.deathage">
+        כשהוא בן
+        {{root.profileDetails.deathage }} ,
+    </label>
+    <label *ngIf="root.profileDetails.burialplace">ונקבר ב {{root.profileDetails.burialplace}} ,</label>
+    <div *ngIf="root.landingDetails.template">{{root.landingDetails.template}}</div>
+    <div *ngIf="root.indexDetails.situationPicture">
+        <img src="{{root.indexDetails.situationPicture}}">
+    </div>
+    <h1>מידע נוסף</h1>
+    <div *ngIf="root.landingDetails.moreLink.length > 0">
+        <label *ngFor="let item of root.landingDetails.moreLink">
+            {{item.link}},
+        </label>
+    </div>
+    <div *ngIf="root.profileDetails.tags.length > 0">
+        <label *ngFor="let item of root.profileDetails.tags">
+            {{item}},
+        </label>
+    </div>
+</div>

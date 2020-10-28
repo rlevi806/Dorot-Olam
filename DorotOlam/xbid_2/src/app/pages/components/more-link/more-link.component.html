@@ -1,0 +1,8 @@
+<div class="col-xs-12 col-md-6">
+    <label>תיאור</label>
+    <input type="text" (blur)="descriptionBlur(description)" #description class="form-control"/>
+</div>
+<div class="col-xs-12 col-md-6">
+    <label>קישור</label>
+    <input class="form-control" (blur)="linkBlur(link)" #link type='text' formControlName='link' />
+</div>

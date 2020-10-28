@@ -1,0 +1,100 @@
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h1 class="profile-title text-left">תולדות חיים</h1>
+            <h5 class="text-on-back"></h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="lifeForm" (click)='onSubmit()'>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> 	תאריך לידה</label>
+                    <input class="form-control" type="date" formControlName='birthDate' [(ngModel)]="profile.birthDate"  required/>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> 	מקום לידה </label>
+                    <input class="form-control" [(ngModel)]="profile.birthplace" formControlName='birthplace' ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" required/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> 	תאריך פטירה </label>
+                    <input class="form-control" [(ngModel)]="profile.deathdate" type="date" formControlName='deathdate' required/>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> 	גיל פטירה </label>
+                    <input class="form-control" type="number" [(ngModel)]="profile.deathage" formControlName='deathage' required/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label> 	מקום פטירה </label>
+                    <input class="form-control" [(ngModel)]="profile.deathplace" formControlName='deathplace' ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" required/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label> 		מקום קבורה </label>
+                    <input class="form-control" type="text" [(ngModel)]="profile.burialplace" formControlName='burialplace' required/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label> 			תולדות חיים </label>
+                    <textarea class="form-control" type="text" [(ngModel)]="profile.lifehistory" formControlName='lifehistory' required></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <label> 	מקום מגורים עיקרי </label>
+                    <input class="form-control" [(ngModel)]="profile.residence" formControlName='residence' id="residencecontrol0" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" required/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label> 	כתובות נוספות </label>
+                    <span><i style="font-size:24px" class="fa" (click)='addItem()' style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                   
+                        <div *ngFor="let item of moreAddresses; index as i">
+                          <app-more-address [moreAddress]='item' (moreAddressBlur)='moreAddressBlur($event,i)'></app-more-address>
+                    <span><i style="font-size:24px" class="fa"  (click)='removeItem(i)' style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">	תגיות מתאימות</label>
+                <select multiple class="form-control" id="exampleFormControlSelect1" [(ngModel)]="profile.tags" formControlName='tags' required>
+                  <option>חלל פעולות איבה</option>
+                  <option>חלל צה"ל</option>
+                  <option>חלל צה"ל</option>
+                  <option>קורונה</option>
+                  <option>נספה בשואה</option>
+                  <option>ניצול שואה</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

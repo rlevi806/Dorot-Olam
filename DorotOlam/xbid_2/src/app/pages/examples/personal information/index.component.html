@@ -1,0 +1,90 @@
+<div class="container position-relative">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <h1 class="text-center">פרטים אישיים</h1>
+        <p>
+          <mat-form-field>
+            <mat-label>מספר זהות</mat-label>
+            <input matInput placeholder="מספר זהות" [(ngModel)]="index.id" formControlName="id">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>שם פרטי</mat-label>
+            <input matInput placeholder="שם פרטי"[(ngModel)]="index.firstName" formControlName="firstName">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>שם משפחה</mat-label>
+            <input matInput placeholder="שם משפחה" [(ngModel)]="index.lastName" formControlName="lastName">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>שם משפחה קודם</mat-label>
+            <input matInput placeholder="שם משפחה קודם" [(ngModel)]="index.previousFamilyName" formControlName="previousFamilyName">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>מין</mat-label>
+            <mat-select [(ngModel)]="index.gender" formControlName="gender">
+              <mat-option>
+                זָכָר
+              </mat-option>
+              <mat-option>
+                נְקֵבָה
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>מין</mat-label>
+            <mat-select [(ngModel)]="index.attribution" formControlName="attribution">
+              <mat-option>
+                ישראל
+              </mat-option>
+              <mat-option>
+                לוי
+              </mat-option>
+              <mat-option>
+                כהן
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>תואר</mat-label>
+            <input matInput placeholder="תואר" [(ngModel)]="index.degree" formControlName="degree">
+          </mat-form-field>
+        </p>
+        <p>
+          <label for="picture" class="text-right">תמונה</label>
+          <input id="picture" type="file" (change)="handleFileInput($event.target.files, 'picture')" accept="image/*">
+        </p>
+        <p>
+          <label for="situationPicture" class="text-right">תמונת מצבה</label>
+          <input id="situationPicture"  type="file" (change)="handleFileInput($event.target.files, 'situationPicture')"
+            accept="image/*">
+        </p>
+        <p class="text-right">
+          <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"  (click)="sendDetaiels()">שלח</button>
+          </mat-card-actions>
+        </p>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

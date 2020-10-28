@@ -1,0 +1,117 @@
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h1 class="profile-title text-left">מורשת</h1>
+            <h5 class="text-on-back"></h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="landingForm" (click)='onsubmit()'>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> השתייכות קהילתית </label>
+                    <input class="form-control" type="text" [(ngModel)]="landing.affiliation"
+                      formControlName='affiliation' />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div>
+                  <label> מקום לימוד </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addStudyPlace()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+                <div *ngFor="let item of studyPlaces; index as i">
+                  <app-study-place [study-place]='item' (studyBlur)='studyBlur($event,i)'></app-study-place>
+
+                  <span><i style="font-size:24px" class="fa" (click)='removeStudyPlace(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <label> עיסוק </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addOccupation()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+                <div *ngFor="let item of occupations; index as i">
+                  <app-occupation [occupation]='item' (occupationBlur)='occupationBlur($event,i)'></app-occupation>
+
+                  <span><i style="font-size:24px" class="fa" (click)='removeOccupation(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="col-xs-6">
+
+                <div class="row">
+                  <label> רבנים </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addRabbis()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+
+                <div *ngFor="let item of rabbis; index as i">
+                  <app-rabbis [rabbi]='item' (rabbiBlur)='rabbiBlur($event,i)'></app-rabbis>
+
+
+                  <span><i style="font-size:24px" class="fa" (click)='removeRabbis(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <label> תלמידים </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addStudents()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+
+                <div *ngFor="let item of students; index as i">
+                  <app-students [student]='item' (studentBlur)='studentBlur($event,i)'></app-students>
+                  <span><i style="font-size:24px" class="fa" (click)='removeStudents(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <label> יצירות </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addWorks()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+
+                <div *ngFor="let item of works; index as i">
+                  <app-works [work]='item' (workBlur)='workBlur($event,i)'></app-works>
+                  <span><i style="font-size:24px" class="fa" (click)='removeWorks(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="col-xs-6">
+
+                <div class="row">
+                  <label> קישורים לחומר נוסף </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addMoreLink()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+                <div *ngFor="let item of moreLinks; index as i">
+                  <app-more-link [moreLink]='item' (moreLinkBlur)='moreLinkBlur($event,i)'></app-more-link>
+                  <span><i style="font-size:24px" class="fa" (click)='removeMoreLink(i)'
+                      style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> נוסח מצבה </label>
+                    <textarea class="form-control" type="text" [(ngModel)]="landing.template"
+                      formControlName='template'></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

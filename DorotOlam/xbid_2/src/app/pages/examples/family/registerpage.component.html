@@ -1,0 +1,97 @@
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h1 class="profile-title text-left">משפחה</h1>
+            <h5 class="text-on-back"></h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div>
+                      <label> אב </label>
+                    </div>
+                    <label>שם פרטי</label>
+                    <input class="form-control" formControlName='fatherFirstName' [(ngModel)]="register.fatherFirstName"
+                      type="text" />
+                    <label>שם משפחה</label>
+                    <input class="form-control" type="text" [(ngModel)]="register.fatherLastName"
+                      formControlName='fatherLastName' />
+                    <label>תעודת זהות</label>
+                    <input class="form-control" [(ngModel)]="register.fatherId" formControlName='fatherId' />
+                    <label>מוצא</label>
+                    <input ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)"
+                      [options]='options' class="form-control" type="text" [(ngModel)]="register.fatherOrigin"
+                      formControlName='fatherOrigin' />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div>
+                      <label> אם </label>
+                    </div>
+                    <label>שם פרטי</label>
+                    <input class="form-control" type="text" [(ngModel)]="register.motherFirstName"
+                      formControlName='motherFirstName' />
+                    <label>שם משפחה</label>
+                    <input class="form-control" type="text" formControlName='motherLastName'
+                      [(ngModel)]="register.motherLastName" />
+                    <label>תעודת זהות</label>
+                    <input class="form-control" formControlName='motherId' [(ngModel)]="register.motherId" />
+                    <label>מוצא</label>
+                    <input ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)"
+                      [options]='options' class="form-control" type="text" formControlName='motherOrigin'
+                      [(ngModel)]="register.motherOrigin" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <label> בן / בת זוג </label>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <label> שם פרטי </label>
+                    <input class="form-control" type="text" formControlName='partnerFirstName'
+                      [(ngModel)]="register.partnerFirstName" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label> שם משפחה</label>
+                    <input type="text" class="form-control" formControlName='partnerLastName'
+                      [(ngModel)]="register.partnerLastName" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>תעודת זהות</label>
+                    <input class="form-control" formControlName='partnerId' [(ngModel)]="register.partnerId" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>מוצא</label>
+                    <input ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)"
+                      [options]='options' class="form-control" type="text" formControlName='partnerOrigin'
+                      [(ngModel)]="register.partnerOrigin" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <label> בני משפחה נוספים </label>
+                  <span><i style="font-size:24px" class="fa" (click)='addItem()'
+                      style='display: inline-block;cursor: pointer;'>&#xf067;</i></span>
+                </div>
+                      <div *ngFor="let item of moreFamilyMembers; index as i">
+                <app-more-family-members [moreFamilyMember]='item' (moreFamilyMemberBlur)='moreFamilyMemberBlur($event,i)'></app-more-family-members>
+                <span><i style="font-size:24px" class="fa" (click)='removeItem(i)'
+                    style='display: inline-block;cursor: pointer;margin-left: 10px;'>&#xf068;</i></span>
+              </div>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>

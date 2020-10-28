@@ -1,0 +1,13 @@
+<div class="col-xs-12 col-sm-6">
+    <label> שם </label>
+    <input (blur)="nameBlur(name)" #name class="form-control" type="text" />
+</div>
+<div class="col-xs-12 col-md-6">
+    <label>תפקיד</label>
+    <input (blur)="roleBlur(role)" #role type="text" class="form-control"  />
+</div>
+<div class="col-xs-12 col-md-6">
+    <label>כתובת</label>
+    <input class="form-control" #address  ngx-google-places-autocomplete
+    (blur)="addressBlur(address)"  [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChangeOfRabbis($event,i)" />
+</div>

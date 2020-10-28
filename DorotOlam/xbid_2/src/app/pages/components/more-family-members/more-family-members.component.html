@@ -1,0 +1,25 @@
+<div class="col-xs-12 col-sm-6">
+    <label>שם פרטי</label>
+    <input class="form-control" type="text" #firstName (blur)="firstNameBlur(firstName)"  />
+</div>
+<div class="col-xs-12 col-sm-6">
+    <label> שם משפחה</label>
+    <input type="text" class="form-control" #lastName (blur)="lastNameBlur(lastName)"/>
+</div>
+<div class="col-xs-12 col-sm-6">
+    <label>תעודת זהות</label>
+    <input class="form-control" #id (blur)="idBlur(id)"/>
+</div>
+<div class="col-xs-12 col-sm-6">
+    <label>מוצא</label>
+    <input ngx-google-places-autocomplete #origin (blur)="originBlur(origin)" (onAddressChange)="handleAddressChange($event)" [options]='options'
+        class="form-control" type="text"/>
+</div>
+<label>קירבה</label>
+<input type="text" [formControl]="closeness" (blur)="closenessBlur(closeness)" placeholder="בחר" aria-label="Number" matInput [matAutocomplete]="auto"
+    class="form-control" >
+<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+    </mat-option>
+</mat-autocomplete>

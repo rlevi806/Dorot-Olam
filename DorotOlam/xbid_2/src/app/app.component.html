@@ -1,0 +1,47 @@
+<router-outlet></router-outlet>
+<!-- <div class="container">
+    <mat-horizontal-stepper>
+        <mat-step>
+            <ng-template matStepLabel>
+                <a [routerLink]="['/screen_1']">Screen 1</a>
+            </ng-template>
+            <app-page [root]="root"></app-page>
+            <app-index></app-index>
+
+            <div>
+                <button type="button" mat-button matStepperNext [routerLink]="['/screen_2']" (click)='change(1)'>Next</button>
+            </div>
+        </mat-step>
+        <mat-step class=''>
+            <ng-template matStepLabel id="Stepper2">
+                <a [routerLink]="['/screen_2']" class="stpper2Rute">Screen 2</a>
+            </ng-template>
+            <app-profilepage></app-profilepage>
+            <div>
+                <button type="button" mat-button matStepperPrevious [routerLink]="['/screen_1']">Back</button>
+                <button type="button" mat-button matStepperNext [routerLink]="['/screen_3']" (click)='change(2)'>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>
+                <a [routerLink]="['/screen_3']">Screen 3</a>
+            </ng-template>
+            <app-registerpage></app-registerpage>
+            <div>
+                <button mat-button matStepperPrevious [routerLink]="['/screen_2']">Back</button>
+                <button type="button" mat-button matStepperNext [routerLink]="['/screen_4']" (click)='change(3)'>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>
+                <a [routerLink]="['/screen_4']">Screen 4</a>
+            </ng-template>
+            <app-landingpage></app-landingpage>
+            <div>
+                <button mat-button (click)="keep()">שמור הכל</button>
+                <button mat-button matStepperPrevious [routerLink]="['/screen_3']">Back</button>
+            </div>
+        </mat-step>
+        
+    </mat-horizontal-stepper>
+</div> -->

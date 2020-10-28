@@ -1,0 +1,10 @@
+<div class="col-xs-12 col-sm-6">
+    <label>שם</label>
+    <input class="form-control" type="text" #name (blur)="nameBlur(name)"/>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <label>כתובת</label>
+    <input class="form-control" #address ngx-google-places-autocomplete
+      [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChangeOfStudyPlace($event,i)"
+      (blur)="addressBlur(address)"/>
+  </div>
