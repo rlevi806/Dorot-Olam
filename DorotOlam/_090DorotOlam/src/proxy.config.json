@@ -1,0 +1,6 @@
+{
+    "target":"https//localhost:44399",
+    "secure":false,
+    "logLevel":"debug",
+    "changeOrigin":true
+}

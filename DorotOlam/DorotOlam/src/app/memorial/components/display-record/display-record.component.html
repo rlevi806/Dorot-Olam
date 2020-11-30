@@ -1,88 +1,88 @@
 <div dir="rtl">
-  <b>
-    {{record.personalInformation.degree}}
-  </b>
-  <h1>פרטים אישיים</h1>
-  <div>
-    <label>
-      {{
-record.personalInformation.firstName
-      }}
-    </label>
-    <!--<label *ngIf="record.personalInformation.lastName">
-      {{record.personalInformation.lastName}}
-    </label>
-    <label *ngIf="record.personalInformation.previousFamilyName">
-      ({{record.personalInformation.previousFamilyName}})
-    </label>-->
-  </div>
-  <!--<div *ngIf="record.personalInformation.picture">
-      <img src="{{record.personalInformation.picture}}">
-  </div>-->
-  <div>
-    <!--<label *ngIf="record.lifeStory.birthDate"> נולד ב {{record.lifeStory.birthDate}} </label>
-    <label *ngIf="record.lifeStory.birthPlace">, ב {{record.lifeStory.birthPlace}} </label>
-    <label *ngIf="record.family.fatherFirstName">, ל {{record.family.fatherFirstName}} </label>
-    <label *ngIf="record.family.motherFirstName">, ו {{record.family.motherFirstName}} </label>-->
-  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>{{record.personalInformation.degree}} {{record.personalInformation.firstName}} {{record.personalInformation.lastName}}</h1>
 
-  <h1>קורות חייו</h1>
-  <!--<div *ngIf="record.lifeStory.lifehistory">{{record.lifeStory.lifehistory}}</div>
-  <div *ngIf="record.lifeStory.moreAddress.length>0  || record.lifeStory.residence">
-      התגורר ב
-      <label *ngIf="record.lifeStory.residence">{{record.lifeStory.residence}},</label>
-      <label *ngFor="let item of record.lifeStory.moreAddress">
-          {{item.name}},
-      </label>-->
-  <!--/div>  -->
-  <!--<div *ngIf="record.legacy.affiliation">השתייך לקהילת {{record.legacy.affiliation}}</div>
-  <div *ngIf="record.legacy.teachers.length > 0">
-      מרבותיו
-      <label *ngFor="let item of record.legacy.teachers">
-          {{item.name}},
-      </label>
-  </div>-->
-  <!--<div *ngIf="record.legacy.students.length > 0">
-      מתלמידיו
-      <label *ngFor="let item of record.legacy.students">
-          {{item.name}},
-      </label>
-  </div>
-  <div *ngIf="record.legacy.studyPlace.length > 0">
-      למד ב
-      <label *ngFor="let item of record.legacy.studyPlace">
-          {{item.name}},
-      </label>
-  </div>
-  <div *ngIf="record.legacy.occupation.length > 0">
-      עסק ב
-      <label *ngFor="let item of record.legacy.occupation">
-          {{item.nameInstitution}},
-      </label>
-  </div>
+      <h2>פרטים אישיים</h2>
 
-  <h1>פטירתו</h1>
-  <label *ngIf="record.lifeStory.deathdate">נפטר ב {{record.lifeStory.deathdate}} ,</label>
-  <label *ngIf="record.lifeStory.deathplace">ב {{record.lifeStory.deathplace}} ,</label>
-   <label *ngIf="">מ {{}}</label>
-  <label *ngIf="record.lifeStory.deathage">
-      כשהוא בן
-      {{record.lifeStory.deathage }} ,
-  </label>
-  <label *ngIf="record.lifeStory.burialplace">ונקבר ב {{record.lifeStory.burialplace}} ,</label>
-  <div *ngIf="record.legacy.template">{{record.legacy.template}}</div>
-  <div *ngIf="record.personalInformation.situationPicture">
-      <img src="{{record.personalInformation.situationPicture}}">
-  </div>
-  <h1>מידע נוסף</h1>
-  <div *ngIf="record.legacy.moreLink.length > 0">
-      <label *ngFor="let item of record.legacy.moreLink">
+      <div>
+
+        <label *ngIf="hasValue(record.personalInformation.firstName)"> {{record.personalInformation.firstName}}</label>
+        <label *ngIf="hasValue(record.personalInformation.lastName)"> {{record.personalInformation.lastName}} </label>
+  <label *ngIf="hasValue(record.personalInformation.previousFamilyName)">  ({{record.personalInformation.previousFamilyName}}) </label>
+      </div>
+      <div *ngIf="hasValue(record.personalInformation.picture)">
+        <img src="{{record.personalInformation.picture}}">
+      </div>
+      <div>
+        <label *ngIf="hasValue(record.lifeStory.birthDate)"> נולד ב {{record.lifeStory.birthDate|date:'dd.MM.yyyy'}} </label>
+        <label *ngIf="hasValue(record.lifeStory.birthPlace)"> ב {{record.lifeStory.birthPlace}} </label>
+        <label *ngIf="hasValue(record.family.fatherFirstName)"> ל {{record.family.fatherFirstName}} </label>
+        <label *ngIf="hasValue(record.family.motherFirstName)"> ו {{record.family.motherFirstName}} </label>
+      </div>
+
+      <h2>קורות חייו</h2>
+
+      <div *ngIf="hasValue(record.lifeStory.lifehistory)">{{record.lifeStory.lifehistory}}</div>
+      <label *ngIf="hasValue(record.lifeStory.residence)">התגורר ב {{record.lifeStory.residence}}</label>
+      <div *ngIf="hasValue(record.legacy.affiliation)">השתייך לקהילת {{record.legacy.affiliation}}</div>
+      <div *ngIf="hasValue(record.legacy.teachers) && hasValue(record.legacy.teachers.length)">
+        מרבותיו:
+        <ul>
+          <li *ngFor="let teacher of record.legacy.teachers">
+            {{teacher.name}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="hasValue(record.legacy.students) && hasValue(record.legacy.students.length)">
+        מתלמידיו:
+        <ul>
+          <li *ngFor="let student of record.legacy.students">
+            {{student.name}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="hasValue(record.legacy.studyPlace) && hasValue(record.legacy.studyPlace.length)">
+        למד ב:
+        <ul>
+          <li *ngFor="let studyPlace of record.legacy.studyPlace">
+            {{studyPlace.name}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="hasValue(record.legacy.occupation) && hasValue(record.legacy.occupation.length)">
+        עסק ב:
+        <ul>
+          <li *ngFor="let occupation of record.legacy.occupation">
+            {{occupation.nameInstitution}}
+          </li>
+        </ul>
+      </div>
+
+      <h2>פטירתו</h2>
+
+      <label *ngIf="hasValue(record.lifeStory.deathDate)">נפטר ב {{record.lifeStory.deathDate|date:'dd.MM.yyyy'}} ,</label>
+      <label *ngIf="hasValue(record.lifeStory.deathPlace)">ב {{record.lifeStory.deathPlace}} ,</label>
+      <label *ngIf="hasValue(record.lifeStory.deathAge)">
+        כשהוא בן
+        {{record.lifeStory.deathAge}} ,
+      </label>
+      <label *ngIf="hasValue(record.lifeStory.burialPlace)">ונקבר ב {{record.lifeStory.burialPlace}} ,</label>
+      <div *ngIf="hasValue(record.legacy.template)">{{record.legacy.template}}</div>
+      <div *ngIf="hasValue(record.personalInformation.situationPicture)">
+        <img src="{{record.personalInformation.situationPicture}}">
+      </div>
+      <h2>מידע נוסף</h2>
+      <div *ngIf="hasValue(record.legacy.moreLink.length)">
+        <label *ngFor="let item of record.legacy.moreLink">
           {{item.link}},
-      </label>
-  </div>
-  <div *ngIf="record.lifeStory.tags.length > 0">
-      <label *ngFor="let item of record.lifeStory.tags">
+        </label>
+      </div>
+      <div *ngIf="hasValue(record.lifeStory.tags.length)">
+        <label *ngFor="let item of record.lifeStory.tags">
           {{item}},
-      </label>
-  </div>-->
+        </label>
+      </div>
+    </div>
+  </div>
 </div>

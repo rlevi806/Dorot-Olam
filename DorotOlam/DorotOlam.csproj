@@ -21,8 +21,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="_090DorotOlam\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="_090DorotOlam\**" />
+    <EmbeddedResource Remove="_090DorotOlam\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="_090DorotOlam\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 

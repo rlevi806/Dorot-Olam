@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace DorotOlam
 {
@@ -24,17 +25,30 @@ namespace DorotOlam
         {
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost", "http://www.dorotolam.com", "http://localhost:8080",
+                                          "http://localhost:8100").AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
             services.Configure<AppSettings>(Configuration.GetSection("DorotOlam"));
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "DorotOlam/dist";
+                configuration.RootPath = "wwwroot";//"DorotOlam/dist";
             });
+            services.AddSignalR();
+            services.AddControllers();
             AddServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseRouting();
+            app.UseCors();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,12 +81,13 @@ namespace DorotOlam
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "DorotOlam";
+                spa.Options.SourcePath = Path.Join(env.ContentRootPath, "DorotOlam");
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
+                //if (env.IsDevelopment())
+                //{
+                //    spa.Options.SourcePath = Path.Join(env.ContentRootPath, "DorotOlam");
+                //    //spa.UseAngularCliServer(npmScript: "start");
+                //}
             });
         }
 
