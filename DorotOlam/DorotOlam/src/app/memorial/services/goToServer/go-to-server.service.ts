@@ -6,8 +6,8 @@ import { environment } from 'environments/environment';
   providedIn: 'root'
 })
 export class GoToServerService {
-  //baseUrl = `${environment.baseUrl}/api/record`;
-  baseUrl = `https://localhost:44399/api/record`;
+  baseUrl = `${environment.baseUrl}/api/record`;
+  //baseUrl = `https://localhost:44399/api/record`;
   httpOptions={
     headers:new HttpHeaders({
       'Access-Control-Allow-Origin':'*',
